@@ -41,8 +41,8 @@ android {
         applicationId "com.termux"
         minSdkVersion project.properties.minSdkVersion.toInteger()
         targetSdkVersion project.properties.targetSdkVersion.toInteger()
-        versionCode 118
-        versionName "0.118.0"
+        versionCode 1002 // from official app version code
+        versionName "0.118.3-local" // from official app version name + "local"
 
         if (appVersionName) versionName = appVersionName
         validateVersionName(versionName)
@@ -89,6 +89,9 @@ android {
             minifyEnabled true
             shrinkResources false // Reproducible builds
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+
+            // Use universal signing config for reproducible builds
+            signingConfig signingConfigs.debug
         }
 
         debug {
